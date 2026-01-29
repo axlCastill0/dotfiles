@@ -1,6 +1,6 @@
 provider = "OpenMeteo"
 api_key = ""
-city = ""
+city = "Montreal"
 units = "metric"
 showcityname = false
 use_colors = true
