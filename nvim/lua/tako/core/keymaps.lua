@@ -2,13 +2,12 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
-keymap.set("i", ";j", "<ESC>", { desc = "Exit insert mode with jk" })
-keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit to Explore with _pv" })
+keymap.set("i", ";j", "<ESC>", { desc = "Exit insert mode with ;j" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number under cursor" }) -- increment
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number under cursor" }) -- decrement
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
@@ -21,3 +20,18 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+keymap.set("n", "<leader>W", "<cmd>wq<CR>", { desc = "Save file and quit" })
+
+-- keymaps for surround plugin
+-- Old text                    Command         New text
+--------------------------------------------------------------------------------
+--    surr*ound_words             ysiw)           (surround_words)
+--    surr*ound_words             ysiw(           ( surround_words )
+--    *make strings               ys$"            "make strings"
+--    [delete ar*ound me!]        ds]             delete around me!
+--    remove <b>HTML t*ags</b>    dst             remove HTML tags
+--    'change quot*es'            cs'"            "change quotes"
+--    <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+--    delete(functi*on calls)     dsf             function calls

@@ -1,13 +1,13 @@
-vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd("let g:netrw_liststyle = 3") -- Explore view is a tree instead of window per directory opened
 
-local opt = vim.opt
+local opt = vim.opt -- for conciseness
 
 opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 4 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
@@ -19,7 +19,6 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 
 opt.cursorline = true
 
--- turn on termguicolors for tokyonight colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
