@@ -54,7 +54,7 @@ font-size = 15
 adjust-underline-thickness = 2
 adjust-cursor-thickness = 3
 
-theme = Calamity
+theme = Front End Delight
 
 cursor-color = #B90E0A
 cursor-opacity = 0.7
@@ -76,3 +76,6 @@ quick-terminal-screen = mouse
 macos-secure-input-indication = false
 
 macos-icon = retro
+
+macos-option-as-alt = left
+
