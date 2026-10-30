@@ -1,5 +1,5 @@
 # NOTE: fastfetch command before Powerlevel10k instant prompt
-fastfetch
+# fastfetch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -140,6 +140,7 @@ alias vim="nvim"
 alias pyso="source venv/bin/activate"
 # Next level of an ls, Options:  --no-filesize --no-time --no-permissions
 alias ls="eza --no-filesize --long --color=always --icons=always --no-time --no-user"
+alias ssh='TERM=xterm-256color ssh'
 
 # NOTE: commands setup
 if type brew &>/dev/null; then
@@ -171,4 +172,10 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+export PATH="$HOME/.local/bin:$PATH"
+# >>> Photon CLI >>>
+case ":$PATH:" in
+  *:'/Users/tako/.photon/bin':*) ;;
+  *) export PATH="$PATH":'/Users/tako/.photon/bin' ;;
+esac
+# <<< Photon CLI <<<
