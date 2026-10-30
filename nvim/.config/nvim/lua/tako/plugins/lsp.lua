@@ -12,6 +12,21 @@ return {
                     },
                 },
             })
+
+            -- prettier and sqlfluff are not LSP servers, so mason-lspconfig's
+            -- ensure_installed does not cover them. Installing them through mason
+            -- keeps the config self-provisioning on any OS instead of relying on
+            -- whatever happens to be on PATH.
+            local registry = require("mason-registry")
+            local tools = { "prettier", "sqlfluff" }
+            registry.refresh(function()
+                for _, tool in ipairs(tools) do
+                    local ok, pkg = pcall(registry.get_package, tool)
+                    if ok and not pkg:is_installed() then
+                        pkg:install()
+                    end
+                end
+            end)
         end,
     },
     {

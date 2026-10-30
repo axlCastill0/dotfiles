@@ -9,8 +9,10 @@ return {
             "L3MON4D3/LuaSnip",
             -- follow latest release.
             version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-            -- install jsregexp (optional!).
-            build = "make install_jsregexp",
+            -- jsregexp is optional; its Makefile target shells out to rm/cp, so skip
+            -- it on Windows rather than failing every sync. Only LSP snippet regex
+            -- transforms are lost without it.
+            build = vim.fn.has("win32") == 1 and false or "make install_jsregexp",
         },
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets

@@ -4,7 +4,14 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- optional but recommended
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            -- make only works on Windows under MinGW; cmake + MSVC Build Tools is
+            -- the path upstream supports there
+            build = vim.fn.has("win32") == 1
+                    and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install"
+                or "make",
+        },
         "nvim-tree/nvim-web-devicons",
         "folke/todo-comments.nvim",
     },

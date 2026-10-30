@@ -38,7 +38,7 @@ return {
                 },
             },
             filters = {
-                custom = { ".DS_Store" },
+                custom = { ".DS_Store", "Thumbs.db", "desktop.ini" },
             },
             git = {
                 ignore = false,
