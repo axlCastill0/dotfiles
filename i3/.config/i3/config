@@ -8,7 +8,6 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-include $HOME/.config/i3/workspaces.conf
 
 set $mod Mod4
 set $modA Mod1
@@ -71,7 +70,7 @@ tiling_drag modifier titlebar
 #Workspace
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+q kill
@@ -212,4 +211,3 @@ bar {
 }
 
 exec_always --no-startup-id feh --bg-fill ~/pictures/wallpapers/leap-of-faith.jpg
-
