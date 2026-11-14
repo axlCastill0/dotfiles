@@ -11,10 +11,18 @@ Stow-managed on Unix, symlinked directly on Windows.
 
 ## Install
 
-**Linux / macOS** — needs `stow`:
+**Linux / macOS**:
 
 ```bash
 ./install.sh
+```
+
+It checks the toolchain first (`git`, `stow`, `node`, `luarocks`, a C compiler) and
+stops with the exact install command if something is missing. To install the missing
+pieces automatically via brew / apt / pacman / dnf:
+
+```bash
+./install.sh --deps
 ```
 
 **Windows** — needs PowerShell 5.1+, and symlink permission (Developer Mode on, or an
@@ -23,6 +31,9 @@ elevated shell):
 ```powershell
 ./install.ps1
 ```
+
+Same check, reported as a warning rather than a stop. `./install.ps1 -Deps` installs
+the missing ones with winget.
 
 ## Neovim prerequisites
 
@@ -35,7 +46,8 @@ it cannot install a toolchain. Without these, parts fail silently.
 |---|---|---|
 | `git` | lazy.nvim bootstrap, gitsigns | yes |
 | C compiler (`cc`/`gcc`/`clang`/`cl`/`zig`) | treesitter parsers | yes — highlighting falls back to regex without it |
-| Node.js | vtsls, eslint, pyright, prismals, tailwindcss (all npm packages) | yes, for LSP |
+| Node.js | vtsls, eslint, pyright, prismals, tailwindcss (all npm packages) | yes, for LSP — mason cannot install its servers without it |
+| `luarocks` | lazy.nvim builds any plugin shipping a rockspec; oxocarbon.nvim does | yes — the colorscheme fails to load without it |
 | Nerd Font in the terminal | devicons, lualine, alpha header, diagnostic signs | cosmetic |
 | `lazygit` | `<leader>gg` | optional, degrades with a message |
 
@@ -53,6 +65,8 @@ one of 7zip / peazip / archiver / winzip / WinRAR.
 ```powershell
 winget install Git.Git
 winget install OpenJS.NodeJS.LTS
+winget install DEVCOM.Lua
+winget install LuaRocks.LuaRocks
 winget install zig.zig          # satisfies the treesitter compiler requirement
 winget install 7zip.7zip
 winget install JesseDuffield.lazygit
